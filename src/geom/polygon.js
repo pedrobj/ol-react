@@ -10,11 +10,11 @@ export default class Polygon extends OLComponent {
   }
 
   updateFromProps(props) {
-    this.geometry.setCoordinates([this.props.children]).transform('EPSG:4326', 'EPSG:3857');
+    this.geometry.setCoordinates([this.props.children]);
   }
 
   componentDidMount() {
-    this.context.feature.setGeometry(this.geometry);
+    this.context.feature.setGeometry(this.geometry.transform('EPSG:4326', 'EPSG:3857'));
   }
 
   componentWillReceiveProps(newProps) {
